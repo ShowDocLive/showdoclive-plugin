@@ -1,0 +1,17 @@
+{
+  "name": "showdoclive",
+  "version": "1.0.0",
+  "description": "Live production playbooks (ShowDocs) for technical crew: sections, templates, run of show and crew share links. Hosted MCP server at mcp.showdoclive.com; sign in with your ShowDocLive account on first connect.",
+  "author": {
+    "name": "ShowDocLive",
+    "email": "info@showdoclive.com"
+  },
+  "homepage": "https://showdoclive.com",
+  "repository": "https://github.com/ShowDocLive/showdoclive-plugin",
+  "license": "MIT",
+  "keywords": [
+    "showdoclive",
+    "showdoclive mcp"
+  ],
+  "logo": "assets/logo.png"
+}

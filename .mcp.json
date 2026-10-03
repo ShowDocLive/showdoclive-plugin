@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "showdoclive": {
+      "type": "http",
+      "url": "https://mcp.showdoclive.com/mcp"
+    }
+  }
+}
