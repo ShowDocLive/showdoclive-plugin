@@ -21,6 +21,8 @@ https://showdoclive.com/grok-bot.html
 
 ## Tools
 
+35 ShowDocLive actions plus a built-in feedback tool. The 5 actions marked "off by default" start switched off. Each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot).
+
 - `list_playbooks` — List ShowDocs (read-only)
 - `get_playbook` — Read a ShowDoc (read-only)
 - `create_playbook` — Create a ShowDoc (writes)
@@ -28,19 +30,35 @@ https://showdoclive.com/grok-bot.html
 - `update_section` — Update a section (writes)
 - `tidy_section` — Format & Tidy a section (writes)
 - `undo_section_change` — Undo last section change (writes)
+- `move_section` — Move a section (writes)
+- `undo_section_move` — Undo last section move (writes)
+- `delete_section` — Delete a section (destructive, off by default)
 - `place_content` — Suggest where text belongs (writes)
 - `list_templates` — List templates (read-only)
 - `get_template` — Read a template (read-only)
 - `create_playbook_from_template` — New ShowDoc from a template (writes)
+- `duplicate_playbook` — Duplicate a ShowDoc (writes)
+- `archive_playbook` — Archive a ShowDoc (writes)
+- `unarchive_playbook` — Unarchive a ShowDoc (writes)
+- `delete_playbook` — Delete a ShowDoc (destructive, off by default)
 - `list_show_runs` — List show runs (read-only)
 - `create_show_run` — Create a show run (writes)
+- `get_show_run` — Read a show run (read-only)
+- `add_show_run_rows` — Add show run rows (writes)
+- `update_show_run_row` — Edit a show run row (writes)
+- `move_show_run_row` — Move a show run row (writes)
+- `delete_show_run_rows` — Delete show run rows (destructive)
+- `undo_show_run_change` — Undo the last show run API change (writes)
+- `add_show_run_column` — Add a show run column (writes)
+- `update_show_run_column` — Edit a show run column (writes)
+- `delete_show_run_column` — Delete a show run column (destructive, off by default)
 - `rename_show_run` — Rename a show run (writes)
-- `delete_show_run` — Delete a show run (destructive)
+- `delete_show_run` — Delete a show run (destructive, off by default)
 - `get_share_status` — See share link status (read-only)
 - `set_share_run_of_show` — Show or hide run of show on the share link (writes)
-- `create_share_link` — Create or replace the share link (destructive)
+- `create_share_link` — Create or replace the share link (destructive, off by default)
 - `account_get` — Read my profile (read-only)
-- `request_feature` — Request a feature (always available)
+- `submit_feedback` — Send feedback to the ShowDocLive developers: missing tools, bugs, confusing behaviour (always available)
 
 ## Network endpoints
 
