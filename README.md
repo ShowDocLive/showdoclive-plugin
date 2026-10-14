@@ -115,17 +115,24 @@ https://showdoclive.com/grok-bot.html
 - `system_swap` — Swap a device (writes)
 - `system_undo` — Undo a system change (writes)
 - `diagram_render_png` — See a diagram (read-only)
+- `knowledge_get` — Get drawing rules (read-only)
+- `knowledge_add` — Add a drawing rule (writes)
+- `knowledge_update` — Update a drawing rule (writes)
+- `cable_search` — Search cables (read-only)
+- `cable_get` — Get a cable (read-only)
+- `system_update_connection` — Update a connection (writes)
+- `diagram_cleanup` — Clean up a diagram (writes)
 - `submit_feedback` — Send feedback to the ShowDocLive developers: missing tools, bugs, confusing behaviour (always available)
 - `get_connector_updates` — What's new: toolset version, changelog, deprecated tools and replacements (read-only, always available)
 
-The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a one-time notice in the next tool result, and can call `get_connector_updates` for the changelog.
+The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.8.0, 2026-10-14)
+## What's new (toolset v1.9.0, 2026-10-15)
 
-Equipment and systems for Diagrams: a shared equipment library plus your own devices, device shapes with labelled ports, auto-picked cable connections with automatic swaps when a device is full, plain-language validation, a lossless JSON view of the whole diagram, undo, and server PNG renders.
+Diagrams learn the rules: shared drawing rules (Knowledge), per-device rules, a cable library with automatic picks by signal and length, editable connections and a clean-up tool. Signal flow uses library equipment, never plain shapes; inputs left, outputs right.
 
-- New: `diagram_render_png`, `equipment_create`, `equipment_get`, `equipment_search`, `equipment_update`, `system_add_devices`, `system_connect`, `system_get`, `system_swap`, `system_undo`, `system_update`, `system_validate`
-- Changed: `diagram_export`, `submit_feedback`
+- New: `cable_get`, `cable_search`, `diagram_cleanup`, `knowledge_add`, `knowledge_get`, `knowledge_update`, `system_update_connection`
+- Changed: `diagram_create`, `diagram_update`, `equipment_create`, `equipment_get`, `equipment_update`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_undo`, `system_validate`
 
 ## Network endpoints
 
