@@ -1,6 +1,77 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 (2026-10-14)
+
+Listing updated for toolset v1.8.0: README tool list matches the live connector (destructive actions marked off by default), canonical privacy and terms URLs (https://showdoclive.com/privacy, https://showdoclive.com/terms).
+
+### Toolset 1.8.0 (2026-10-14)
+
+- Equipment and systems for Diagrams: a shared equipment library plus your own devices, device shapes with labelled ports, auto-picked cable connections with automatic swaps when a device is full, plain-language validation, a lossless JSON view of the whole diagram, undo, and server PNG renders.
+- Added: `diagram_render_png`, `equipment_create`, `equipment_get`, `equipment_search`, `equipment_update`, `system_add_devices`, `system_connect`, `system_get`, `system_swap`, `system_undo`, `system_update`, `system_validate`
+- Changed: `diagram_export`, `submit_feedback`
+
+### Toolset 1.7.0 (2026-10-14)
+
+- Feedback asks you first and records what you tried, what was missing and a suggested change; three delete/remove actions now start switched off; small base64 files only (use upload links).
+- Changed: `submit_feedback`, `attach_file_to_section`, `delete_show_run_rows`, `remove_schedule_category`, `remove_schedule_column`
+
+### Toolset 1.6.0 (2026-10-14)
+
+- New Diagrams tools: list, read, create (from Mermaid flowcharts or draw.io XML, auto-laid out, line jumps on every edge), update (merge cells by id or replace) and export draw.io-compatible diagrams.
+- Added: `diagram_create`, `diagram_export`, `diagram_get`, `diagram_update`, `diagrams_list`
+- Changed: `submit_feedback`
+
+### Toolset 1.5.1 (2026-10-10)
+
+- Schedule durations: the duration text in get_schedule and exports is now H:MM (0:30 = 30 min, 2:30 = 2 h 30). Duration inputs stay numbers and are documented as such.
+- Changed: `add_schedule_rows`, `create_schedule`, `export_schedule`, `get_schedule`, `update_schedule_row`, `update_schedule_rows`
+
+### Toolset 1.5.0 (2026-10-10)
+
+- Rundown days can have their own planned start and end (falling back to the show's). Schedules gain colour categories, custom text columns, schedule-wide and per-day notes, and can link to a specific rundown by id.
+- Added: `add_schedule_category`, `add_schedule_column`, `remove_schedule_category`, `remove_schedule_column`, `rename_schedule_column`, `update_schedule_category`
+- Changed: `add_schedule_rows`, `add_show_run_day`, `create_schedule`, `export_schedule`, `get_schedule`, `get_show_run`, `link_schedule_to_document`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_schedule_settings`, `update_show_run_day`, `update_show_run_settings`
+
+### Toolset 1.4.4 (2026-10-10)
+
+- Untimed schedule items with start "", locations in bulk, section headers read and written as sectionTitle, sectionDescription and notes, and multi-day rundown writes no longer restamp other days.
+- Changed: `add_schedule_location`, `add_schedule_rows`, `add_show_run_rows`, `create_schedule`, `get_show_run`, `update_schedule_row`, `update_schedule_rows`, `update_show_run_row`, `update_show_run_rows`
+
+### Toolset 1.4.3 (2026-10-09)
+
+- Attach real files without base64: create_attachment_upload gives a one-time URL your computer uploads the raw bytes to with curl. Parallel attaches no longer fail.
+- Added: `create_attachment_upload`, `get_attachment_upload`
+- Changed: `attach_file_to_section`, `list_storage_options`, `set_file_upload_link`, `submit_feedback`
+
+### Toolset 1.4.2 (2026-10-09)
+
+- New export_schedule returns a whole schedule as JSON or CSV. delete_schedule now refuses to delete the last schedule in a ShowDoc (409 LAST_SCHEDULE).
+- Added: `export_schedule`
+- Changed: `delete_schedule`, `submit_feedback`
+
+### Toolset 1.4.1 (2026-10-09)
+
+- Schedule fixes: shift_schedule_items toDate keeps time order, from/to reads include overlapping items, move_schedule_row accepts confirmOverwrite, and linking is undoable.
+- Changed: `create_schedule`, `get_schedule`, `link_schedule_to_document`, `move_schedule_row`, `shift_schedule_items`, `update_schedule_settings`
+
+### Toolset 1.4.0 (2026-10-09)
+
+- Schedules are ready for bots: per-row conflict checks without baseRev, server-side undo, strict times (HH:MM, durationMinutes) with ISO startAt/endAt, filtered reads, and new tools for shifting items, locations, linking and duplicating.
+- Added: `add_schedule_location`, `duplicate_schedule`, `link_schedule_to_document`, `remove_schedule_location`, `rename_schedule_location`, `shift_schedule_items`, `undo_schedule_change`
+- Changed: `add_schedule_rows`, `create_schedule`, `delete_schedule_rows`, `get_schedule`, `list_schedules`, `move_schedule_row`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_schedule_settings`
+
+### Toolset 1.3.1 (2026-10-08)
+
+- Wording only: the app now calls show runs rundowns (or run of show). Tool titles, descriptions, scopes and server instructions say rundown; tool names, inputs and behaviour are unchanged.
+- Changed: `activate_show_run_day`, `add_show_run_column`, `add_show_run_day`, `add_show_run_rows`, `create_crew_share_link`, `create_show_run`, `delete_show_run`, `delete_show_run_column`, `delete_show_run_day`, `delete_show_run_rows`, `duplicate_playbook`, `get_show_run`, `list_schedules`, `list_show_runs`, `move_show_run_row`, `rename_show_run`, `turn_off_crew_share_link`, `undo_show_run_change`, `update_show_run_column`, `update_show_run_day`, `update_show_run_row`, `update_show_run_rows`, `update_show_run_settings`
+
+### Toolset 1.3.0 (2026-10-06)
+
+- Schedules: a clock plan beside the rundown. Each item owns its start time, days sit in the same list, and Grok Bot can read and edit the whole schedule.
+- Added: `add_schedule_rows`, `create_schedule`, `delete_schedule`, `delete_schedule_rows`, `get_schedule`, `list_schedules`, `move_schedule_row`, `update_schedule_row`, `update_schedule_rows`, `update_schedule_settings`
+- Changed: `submit_feedback`
+
+## Toolset 1.2.0 (2026-10-04)
 
 - Sharing: turning a ShowDoc share link or a crew link off now pauses it; turning it on again resumes the same URL. Replacing a link (confirm) breaks the old URL. `get_share_status` reports on, paused or none for every link.
 - Files: `list_storage_options` (Fast Storage and Google Drive availability, quota, Drive folder); `attach_file_to_section` now needs `target` (`fast_storage` or `google_drive`), takes `contentBase64` (up to 25 MB) or an https `sourceUrl`, refuses executables and scripts, and defaults to the single Files section; `list_attachments`; `remove_attachment` (off by default; Drive files stay in Drive unless `deleteFromStorage: true`).
