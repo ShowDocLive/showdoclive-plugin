@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-10-15)
+
+Listing updated for toolset v1.9.0.
+
+### Toolset 1.9.0 (2026-10-15)
+
+- Diagrams learn the rules: shared drawing rules (Knowledge), per-device rules, a cable library with automatic picks by signal and length, editable connections and a clean-up tool. Signal flow uses library equipment, never plain shapes; inputs left, outputs right.
+- Added: `cable_get`, `cable_search`, `diagram_cleanup`, `knowledge_add`, `knowledge_get`, `knowledge_update`, `system_update_connection`
+- Changed: `diagram_create`, `diagram_update`, `equipment_create`, `equipment_get`, `equipment_update`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_undo`, `system_validate`
+
 ## 1.1.0 (2026-10-14)
 
 Listing updated for toolset v1.8.0: README tool list matches the live connector (destructive actions marked off by default), canonical privacy and terms URLs (https://showdoclive.com/privacy, https://showdoclive.com/terms).
