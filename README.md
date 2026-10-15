@@ -133,12 +133,10 @@ https://showdoclive.com/grok-bot.html
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.11.0, 2026-10-15)
+## What's new (toolset v1.12.0, 2026-10-15)
 
-Diagrams v4: before drawing, ask whether the user wants a block diagram, a full wiring diagram or both. Cables are routed as clean schematic lines and devices can be auto-laid out; locked devices never move: on needsPermission ask the user, then retry with allowMoveLocked.
-
-- New: `cable_add_length`, `diagram_lists`, `system_insert_converter`, `system_update_device`
-- Changed: `diagram_cleanup`, `diagram_export`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_update_connection`
+Shorter connector instructions: detailed guidance moved into the tool descriptions. No rules changed, and no tools were added or removed.
+- Changed: `delete_playbook`, `delete_schedule`, `delete_schedule_rows`, `delete_section`, `delete_show_run`, `delete_show_run_column`, `delete_show_run_day`, `get_show_run`, `remove_schedule_location`
 
 ## Network endpoints
 
