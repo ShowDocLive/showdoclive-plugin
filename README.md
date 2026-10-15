@@ -124,17 +124,21 @@ https://showdoclive.com/grok-bot.html
 - `cable_get` — Get a cable (read-only)
 - `system_update_connection` — Update a connection (writes)
 - `diagram_cleanup` — Clean up a diagram (writes)
+- `system_update_device` — Update a device on a diagram (writes)
+- `system_insert_converter` — Insert a converter (writes)
+- `cable_add_length` — Save a cable length (writes)
+- `diagram_lists` — Equipment and cable lists (read-only)
 - `submit_feedback` — Send feedback to the ShowDocLive developers: missing tools, bugs, confusing behaviour (always available)
 - `get_connector_updates` — What's new: toolset version, changelog, deprecated tools and replacements (read-only, always available)
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.10.0, 2026-10-15)
+## What's new (toolset v1.11.0, 2026-10-15)
 
-Contact photos: one photo per person (matched by name) shows next to their name in ShowDocs, rundown people cells, phone views and shares. If you have a photo of someone (attached, a website or LinkedIn), add it with contact_set_photo.
+Diagrams v4: before drawing, ask whether the user wants a block diagram, a full wiring diagram or both. Cables are routed as clean schematic lines and devices can be auto-laid out; locked devices never move: on needsPermission ask the user, then retry with allowMoveLocked.
 
-- New: `contact_list`, `contact_set_photo`
-- Changed: `add_schedule_rows`, `add_section`, `add_sections`, `add_show_run_column`, `add_show_run_rows`, `create_schedule`, `create_show_run`, `diagram_update`, `get_playbook`, `get_schedule`, `get_show_run`, `place_content`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_section`, `update_show_run_row`, `update_show_run_rows`
+- New: `cable_add_length`, `diagram_lists`, `system_insert_converter`, `system_update_device`
+- Changed: `diagram_cleanup`, `diagram_export`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_update_connection`
 
 ## Network endpoints
 
