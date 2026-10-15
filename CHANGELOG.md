@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0 (2026-10-15)
+
+Listing updated for toolset v1.10.0.
+
+### Toolset 1.10.0 (2026-10-15)
+
+- Contact photos: one photo per person (matched by name) shows next to their name in ShowDocs, rundown people cells, phone views and shares. If you have a photo of someone (attached, a website or LinkedIn), add it with contact_set_photo.
+- Added: `contact_list`, `contact_set_photo`
+- Changed: `add_schedule_rows`, `add_section`, `add_sections`, `add_show_run_column`, `add_show_run_rows`, `create_schedule`, `create_show_run`, `diagram_update`, `get_playbook`, `get_schedule`, `get_show_run`, `place_content`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_section`, `update_show_run_row`, `update_show_run_rows`
+
 ## 1.2.0 (2026-10-15)
 
 Listing updated for toolset v1.9.0.

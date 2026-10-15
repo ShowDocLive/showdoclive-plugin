@@ -23,6 +23,8 @@ https://showdoclive.com/grok-bot.html
 
 - `list_playbooks` — List ShowDocs (read-only)
 - `get_playbook` — Read a ShowDoc (read-only)
+- `contact_set_photo` — Set a contact's photo (writes)
+- `contact_list` — List contact photos (read-only)
 - `create_playbook` — Create a ShowDoc (writes)
 - `add_section` — Add a section (writes)
 - `add_sections` — Add several sections (writes)
@@ -127,12 +129,12 @@ https://showdoclive.com/grok-bot.html
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.9.0, 2026-10-15)
+## What's new (toolset v1.10.0, 2026-10-15)
 
-Diagrams learn the rules: shared drawing rules (Knowledge), per-device rules, a cable library with automatic picks by signal and length, editable connections and a clean-up tool. Signal flow uses library equipment, never plain shapes; inputs left, outputs right.
+Contact photos: one photo per person (matched by name) shows next to their name in ShowDocs, rundown people cells, phone views and shares. If you have a photo of someone (attached, a website or LinkedIn), add it with contact_set_photo.
 
-- New: `cable_get`, `cable_search`, `diagram_cleanup`, `knowledge_add`, `knowledge_get`, `knowledge_update`, `system_update_connection`
-- Changed: `diagram_create`, `diagram_update`, `equipment_create`, `equipment_get`, `equipment_update`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_undo`, `system_validate`
+- New: `contact_list`, `contact_set_photo`
+- Changed: `add_schedule_rows`, `add_section`, `add_sections`, `add_show_run_column`, `add_show_run_rows`, `create_schedule`, `create_show_run`, `diagram_update`, `get_playbook`, `get_schedule`, `get_show_run`, `place_content`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_section`, `update_show_run_row`, `update_show_run_rows`
 
 ## Network endpoints
 
