@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 (2026-10-15)
+
+Listing updated for toolset v1.11.0.
+
+### Toolset 1.11.0 (2026-10-15)
+
+- Diagrams v4: before drawing, ask whether the user wants a block diagram, a full wiring diagram or both. Cables are routed as clean schematic lines and devices can be auto-laid out; locked devices never move: on needsPermission ask the user, then retry with allowMoveLocked.
+- Added: `cable_add_length`, `diagram_lists`, `system_insert_converter`, `system_update_device`
+- Changed: `diagram_cleanup`, `diagram_export`, `submit_feedback`, `system_add_devices`, `system_connect`, `system_update_connection`
+
 ## 1.3.0 (2026-10-15)
 
 Listing updated for toolset v1.10.0.
