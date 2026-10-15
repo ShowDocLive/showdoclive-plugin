@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0 (2026-10-15)
+
+Listing updated for toolset v1.12.0.
+
+### Toolset 1.12.0 (2026-10-15)
+
+- Shorter connector instructions: detailed guidance moved into the tool descriptions. No rules changed, and no tools were added or removed.
+- Changed: `delete_playbook`, `delete_schedule`, `delete_schedule_rows`, `delete_section`, `delete_show_run`, `delete_show_run_column`, `delete_show_run_day`, `get_show_run`, `remove_schedule_location`
+
 ## 1.4.0 (2026-10-15)
 
 Listing updated for toolset v1.11.0.
