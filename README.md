@@ -41,6 +41,7 @@ https://showdoclive.com/grok-bot.html
 - `attach_file_to_section` — Attach a file (Fast Storage or Google Drive) (writes)
 - `list_storage_options` — Where can files go? (read-only)
 - `list_attachments` — List file cards (read-only)
+- `get_attachment_download` — Download a file (read-only)
 - `remove_attachment` — Remove a file card (destructive, off by default)
 - `set_file_upload_link` — File Upload Link for a section (writes)
 - `list_templates` — List templates (read-only)
@@ -97,7 +98,7 @@ https://showdoclive.com/grok-bot.html
 - `set_share_run_of_show` — Show or hide run of show on the share link (writes)
 - `create_share_link` — Turn on, resume or replace the share link (writes)
 - `turn_off_share_link` — Pause the ShowDoc share link (writes)
-- `create_crew_share_link` — Turn on, resume or replace a crew link (writes)
+- `create_crew_share_link` — Older crew link: resume or replace (writes)
 - `turn_off_crew_share_link` — Pause a run of show crew link (writes)
 - `account_get` — Read my profile (read-only)
 - `diagrams_list` — List diagrams (read-only)
@@ -106,15 +107,21 @@ https://showdoclive.com/grok-bot.html
 - `diagram_update` — Update a diagram (writes)
 - `diagram_export` — Export a diagram (read-only)
 - `equipment_search` — Search equipment (read-only)
+- `equipment_groups` — List equipment groups (read-only)
 - `equipment_get` — Get a device (read-only)
 - `equipment_create` — Create a device (writes)
 - `equipment_update` — Update a device (writes)
+- `equipment_usage` — Where an item is used (read-only)
+- `equipment_delete` — Delete an item (destructive, off by default)
 - `system_get` — Read a diagram's system (read-only)
 - `system_update` — Replace a diagram from system JSON (writes)
 - `system_add_devices` — Add devices to a diagram (writes)
 - `system_connect` — Connect devices (writes)
+- `system_visual_link_create` — Add a visual link (writes)
+- `system_visual_link_remove` — Remove a visual link (destructive)
 - `system_validate` — Check a system (read-only)
 - `system_swap` — Swap a device (writes)
+- `system_resync` — Refresh devices from the library (writes)
 - `system_undo` — Undo a system change (writes)
 - `diagram_render_png` — See a diagram (read-only)
 - `knowledge_get` — Get drawing rules (read-only)
@@ -133,10 +140,9 @@ https://showdoclive.com/grok-bot.html
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.12.0, 2026-10-15)
+## What's new (toolset v1.26.6, 2026-10-19)
 
-Shorter connector instructions: detailed guidance moved into the tool descriptions. No rules changed, and no tools were added or removed.
-- Changed: `delete_playbook`, `delete_schedule`, `delete_schedule_rows`, `delete_section`, `delete_show_run`, `delete_show_run_column`, `delete_show_run_day`, `get_show_run`, `remove_schedule_location`
+Bots are offline-aware: users may work offline in the PWA (cached, synced later, user-only conflict resolution). On stale reads suggest reconnecting; on 409 re-read and surface both versions, never blind-retry force. Rehearsal actuals stay local; only show actuals sync.
 
 ## Network endpoints
 
