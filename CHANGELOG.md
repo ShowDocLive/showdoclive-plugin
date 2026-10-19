@@ -1,5 +1,123 @@
 # Changelog
 
+## 1.6.0 (2026-10-19)
+
+Listing updated for toolset v1.26.6: README tool list regenerated from the live connector (114 actions); changelog entries added for toolsets 1.13.0-1.26.6.
+
+### Toolset 1.26.6 (2026-10-19)
+
+- Bots are offline-aware: users may work offline in the PWA (cached, synced later, user-only conflict resolution). On stale reads suggest reconnecting; on 409 re-read and surface both versions, never blind-retry force. Rehearsal actuals stay local; only show actuals sync.
+
+### Toolset 1.26.5 (2026-10-18)
+
+- system_get now shows the crew's on-site patch checklist: which cables are patched or flagged as a problem. Read-only; ticks are made on the phone diagram view.
+- Changed: `system_get`
+
+### Toolset 1.26.4 (2026-10-17)
+
+- Visual links now run at right angles with sharp corners and carry an arrowhead at the to end: from → to is the direction (e.g. Zoom host to receiving laptops).
+- Changed: `system_update_connection`, `system_visual_link_create`
+
+### Toolset 1.26.3 (2026-10-17)
+
+- Port names are the physical connector only (HDMI In, XLR Out, USB 1, USB-C), never what is connected. The library is deduplicated: one item per real device type, so search and reuse instead of adding variants.
+- Changed: `equipment_create`, `equipment_update`, `system_get`, `system_update_device`
+
+### Toolset 1.26.2 (2026-10-17)
+
+- Diagram lines default to right angles with sharp corners. Edges you send without edgeStyle or rounded now get edgeStyle=orthogonalEdgeStyle;rounded=0 instead of drawing as straight diagonals; set edgeStyle or rounded yourself to keep another look.
+- Changed: `diagram_create`, `diagram_update`
+
+### Toolset 1.26.1 (2026-10-16)
+
+- Visual links: one dot can now carry several links (one host to many remotes), and a link has no label unless the item has a Default link name or one is given.
+- Changed: `system_visual_link_create`
+
+### Toolset 1.26.0 (2026-10-16)
+
+- Delete a library item safely: equipment_usage shows where it is used and suggests a replacement; equipment_delete swaps every placed device to the replacement first (off by default).
+- Added: `equipment_delete`, `equipment_usage`
+- Changed: `submit_feedback`
+
+### Toolset 1.25.0 (2026-10-16)
+
+- Visual links: dashed, labelled lines (Zoom, Teams…) between items that join a call, separate from cables. Turn on visualLink for an item, then add or remove links.
+- Added: `system_visual_link_create`, `system_visual_link_remove`
+- Changed: `equipment_create`, `equipment_update`, `submit_feedback`
+
+### Toolset 1.24.2 (2026-10-16)
+
+- Ports can be put on a chosen side of the card (left, right, or a split like 2 left and 2 right), and the port list order is the row order on the card; diagrams follow both.
+- Changed: `equipment_create`, `equipment_update`
+
+### Toolset 1.24.1 (2026-10-16)
+
+- Runs of show are now shared through their linked ShowDoc's link: create_share_link shares both, and get_share_status returns rundownUrl (the rundown on its own page, same password). Per-rundown crew links are now the older option.
+- Changed: `create_crew_share_link`, `create_share_link`, `get_share_status`, `turn_off_crew_share_link`, `turn_off_share_link`
+
+### Toolset 1.24.0 (2026-10-16)
+
+- New get_attachment_download: a 15-minute download URL (no login) for any file card in Fast Storage or Google Drive, with optional inline content for files up to 256 KB.
+- Added: `get_attachment_download`
+- Changed: `list_attachments`, `submit_feedback`
+
+### Toolset 1.23.0 (2026-10-16)
+
+- Library entries are the one source of truth for port names: equipment_update resyncs every placed device on every diagram by port id (cables survive renames), and system_update_device can set an explicit per-device port name override.
+- Changed: `equipment_update`, `system_resync`, `system_update_device`
+
+### Toolset 1.22.0 (2026-10-16)
+
+- Per-port connection lists (system_get io, diagram_lists io), a swap preview (system_swap dryRun) and port-name matching on swaps; quote port names exactly as on the device.
+- Changed: `diagram_lists`, `system_get`, `system_swap`
+
+### Toolset 1.21.0 (2026-10-15)
+
+- Users can make their own equipment groups (with a colour); group accepts their names, and equipment_groups lists all groups.
+- Added: `equipment_groups`
+- Changed: `equipment_create`, `equipment_search`, `equipment_update`, `submit_feedback`
+
+### Toolset 1.20.0 (2026-10-15)
+
+- Equipment has an explicit group (Video, Audio, Lighting, Control, Network, Computers & playback, Power, People, Other) that the left panel groups by.
+- Changed: `equipment_create`, `equipment_search`, `equipment_update`
+
+### Toolset 1.19.0 (2026-10-15)
+
+- Equipment no longer has a separate Name: the label is derived from Brand + Model, else Model, else Item Type, plus an optional short variant to tell generic items apart.
+- Changed: `equipment_create`, `equipment_search`, `equipment_update`
+
+### Toolset 1.18.0 (2026-10-15)
+
+- People and strict library links: Person items (Presenter, Audio Engineer, Slide Operator…) link with viewing, listening, operating and speaking (never cables); brands and models are only set when known; system_resync brings placed devices in line with their library entry.
+- Added: `system_resync`
+- Changed: `diagram_lists`, `equipment_create`, `equipment_search`, `equipment_update`, `submit_feedback`, `system_connect`, `system_swap`
+
+### Toolset 1.17.0 (2026-10-15)
+
+- diagram_cleanup now lines devices up by their connection points (up or down only, locked ones stay) so cables run straight.
+- Changed: `diagram_cleanup`
+
+### Toolset 1.16.0 (2026-10-15)
+
+- Equipment model audit: equipment_create now keeps type and brand; modelName is brand plus model; a swap brings the new model and keeps function, notes and location; diagram_get shows cable waypoints; diagram_lists returns JSON by default.
+- Changed: `diagram_get`, `equipment_get`, `equipment_search`, `system_get`, `system_swap`
+
+### Toolset 1.15.0 (2026-10-15)
+
+- Keep a device function a short card title (e.g. PPT Main, PPT Backup, Operator DSM) and put any longer explanation in the device notes, which show in the side panel. system_add_devices now takes notes and location per device.
+- Changed: `system_add_devices`, `system_update_device`
+
+### Toolset 1.14.0 (2026-10-15)
+
+- Devices now have a function (what each one is used for, the card title), a type (Laptop, Projector…) and a model; library entries are models. Kit lists count per model.
+- Changed: `diagram_lists`, `equipment_create`, `equipment_search`, `equipment_update`, `system_add_devices`, `system_get`, `system_update_device`
+
+### Toolset 1.13.0 (2026-10-15)
+
+- Cables are routed by the server for you (same router as the editor, now with readable spacing); just say what connects to what. New waypoints option for small route tweaks.
+- Changed: `diagram_cleanup`, `system_connect`, `system_update_connection`
+
 ## 1.5.0 (2026-10-15)
 
 Listing updated for toolset v1.12.0.
