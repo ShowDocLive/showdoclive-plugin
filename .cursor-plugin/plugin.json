@@ -1,7 +1,7 @@
 {
   "name": "showdoclive",
   "displayName": "ShowDocLive",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Live production playbooks (ShowDocs) for technical crew: sections, templates, run of show and crew share links. Hosted MCP server at mcp.showdoclive.com; sign in with your ShowDocLive account on first connect.",
   "author": {
     "name": "ShowDocLive",
