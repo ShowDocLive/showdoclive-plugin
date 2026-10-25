@@ -1,5 +1,66 @@
 # Changelog
 
+## 1.7.0 (2026-10-25)
+
+Listing updated for toolset v1.34.0: README tool list regenerated from the live connector (172 actions, grouped), rehearsal-only note for live control; changelog entries added for toolsets 1.27.0-1.34.0.
+
+### Toolset 1.34.0 (2026-10-25)
+
+- Live show control for rehearsals: read where the show is, start and end a rehearsal, GO, stop, resume, keep to time and set the timer mode. You can only drive a rehearsal you started; a real live show answers 403 LIVE_CONTROL_REHEARSAL_ONLY.
+- Added: `show_run_go`, `show_run_keep_to_time`, `show_run_live_get`, `show_run_rehearsal_end`, `show_run_rehearsal_start`, `show_run_set_timer_mode`, `show_run_start`, `show_run_stop`
+- Changed: `submit_feedback`
+
+### Toolset 1.33.0 (2026-10-25)
+
+- One-call tools for diagrams (rename with baseRev, soft delete with restore, PDF link, relink), patch check, groups, cables, knowledge, address book, saved shows and mic edit locks. Creates take an idempotencyKey; destructive tools are off by default.
+- Added: `address_book_add_note`, `address_book_create`, `address_book_delete`, `address_book_get`, `address_book_list`, `address_book_merge`, `address_book_set_project_role`, `address_book_suggestion_accept`, `address_book_suggestion_dismiss`, `address_book_suggestions`, `address_book_update`, `cable_create`, `cable_delete`, `cable_update`, `contact_remove_photo`, `diagram_delete`, `diagram_get_meta`, `diagram_pdf`, `diagram_rename`, `equipment_group_create`, `equipment_group_delete`, `equipment_group_update`, `knowledge_delete`, `mics_share_lock_get`, `mics_share_lock_set`, `patch_get`, `patch_reset`, `patch_set`, `project_rename`, `show_run_archive_delete`, `show_run_archive_get`, `show_run_archive_save`, `show_run_archives_list`, `system_relink`
+- Changed: `diagrams_list`, `submit_feedback`
+
+### Toolset 1.32.0 (2026-10-25)
+
+- Wireless and kits: equipment carries structured RF bands, kits and needs; diagrams pair transmitters with receivers and suggest missing gear; mics on a diagram can be added to the rundown's mic list (Add from diagram).
+- Added: `mics_diagram_preview`, `mics_import_from_diagram`, `system_wireless`
+- Changed: `equipment_create`, `equipment_update`, `submit_feedback`, `system_add_devices`
+
+### Toolset 1.31.2 (2026-10-25)
+
+- The built-in mic types can be replaced per project (e.g. Lapel with Countryman E6, label E6), hidden, and restored; assignments carry over. Removing an own type no longer needs its counts at 0 first, only no assigned mics.
+- Changed: `mics_get`, `mics_set_inventory`
+
+### Toolset 1.31.1 (2026-10-25)
+
+- Projects can have their own mic types besides HH, LAP and HS (e.g. Countryman, Gooseneck, IEM). mics_set_inventory adds, renames and removes them with micTypes; mics_get lists them in plan.types.
+- Changed: `mics_get`, `mics_set_inventory`
+
+### Toolset 1.31.0 (2026-10-22)
+
+- Mic'd: read and plan speaker mics per day (inventory per type, who has which mic, live availability with changeover gaps, conflicts and reallocation suggestions).
+- Added: `mics_assign`, `mics_get`, `mics_set_inventory`
+- Changed: `submit_feedback`
+
+### Toolset 1.30.0 (2026-10-21)
+
+- Contacts are now a full address book: search, read, notes, merge and a per-ShowDoc role (e.g. Lead Facilitator on one show, Presenter on another), separate from the global title.
+- Added: `contact_add_note`, `contact_get`, `contact_merge`, `contact_search`, `contact_set_role`
+- Changed: `contact_create`, `contact_delete`, `contact_list`, `contact_update`, `contact_usage`, `submit_feedback`, `contact_set_photo`
+
+### Toolset 1.29.0 (2026-10-20)
+
+- Each rundown day now has its own run state (actual times, notes, live progress); a live show stays on its day, so activate_show_run_day works during a show.
+- Changed: `activate_show_run_day`
+
+### Toolset 1.28.0 (2026-10-20)
+
+- ShowDoc sections can show a speakers line: photo chips of contacts on the section header, set with set_section_speakers (ids or names; names become contacts).
+- Added: `set_section_speakers`
+- Changed: `submit_feedback`, `update_section`
+
+### Toolset 1.27.0 (2026-10-20)
+
+- People are contacts now: rundown Responsible / Speakers and schedule Who cells can link contacts (id or name, created when missing) with titles and photos; contacts can be created, edited, checked for usage and deleted.
+- Added: `contact_create`, `contact_delete`, `contact_update`, `contact_usage`
+- Changed: `add_schedule_rows`, `add_show_run_rows`, `contact_list`, `submit_feedback`, `update_schedule_row`, `update_schedule_rows`, `update_show_run_row`, `update_show_run_rows`
+
 ## 1.6.0 (2026-10-19)
 
 Listing updated for toolset v1.26.6: README tool list regenerated from the live connector (114 actions); changelog entries added for toolsets 1.13.0-1.26.6.
