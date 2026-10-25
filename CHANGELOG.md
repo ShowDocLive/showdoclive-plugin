@@ -1,5 +1,44 @@
 # Changelog
 
+## 1.8.0 (2026-10-25)
+
+Listing updated for toolset v1.35.5: capabilities summary (diagrams and equipment with real ports, dotted RF links, schedules, address book, files, rehearsal-only show control); 27 actions off by default; changelog entries for toolsets 1.34.1-1.35.5.
+
+### Toolset 1.35.5 (2026-10-25)
+
+- diagram_render_png always returns a complete PNG (auto-scaled to fit the reply cap) and RF links render as unbroken dotted lines in the server SVG, PDF and PNG.
+- Changed: `diagram_render_png`
+
+### Toolset 1.35.4 (2026-10-25)
+
+- Wireless (RF) links: a transmitter's RF Out pairs to one receiver RF In per channel, drawn as a dotted line with no cable or length. New built-in 'Generic 4-channel wireless receiver'.
+- Changed: `system_connect`, `system_update_connection`, `system_wireless`
+
+### Toolset 1.35.3 (2026-10-25)
+
+- equipment_search results are smaller: each port drops its label when it equals the port name (full=true still returns everything).
+- Changed: `equipment_search`
+
+### Toolset 1.35.2 (2026-10-25)
+
+- equipment_search is compact by default (no description, specs or duplicate label; RF band codes only); full=true returns everything. Generic items are named Generic <thing>.
+- Changed: `equipment_search`
+
+### Toolset 1.35.1 (2026-10-25)
+
+- Ports default to two-way (bidir) for USB, network, Dante, i2Net and similar signals; port name required with label as alias; equipment search returns compact RF band codes unless full=true.
+- Changed: `equipment_create`, `equipment_search`, `equipment_update`
+
+### Toolset 1.35.0 (2026-10-25)
+
+- Equipment is reality: ports keep their printed name (name) with an optional per-device label and note; search before creating, ask before adding gear, take ports from the maker and set source. Duplicate checks, generic/verified items, and guards against renaming ports on diagrams.
+- Changed: `equipment_create`, `equipment_search`, `equipment_update`, `system_get`, `system_update_device`
+
+### Toolset 1.34.1 (2026-10-25)
+
+- contact_delete, contact_merge and system_visual_link_remove are now off by default, like the other destructive tools. Ask the user before using them.
+- Changed: `contact_delete`, `contact_merge`, `system_visual_link_remove`
+
 ## 1.7.0 (2026-10-25)
 
 Listing updated for toolset v1.34.0: README tool list regenerated from the live connector (172 actions, grouped), rehearsal-only note for live control; changelog entries added for toolsets 1.27.0-1.34.0.
