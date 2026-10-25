@@ -2,7 +2,7 @@
 
 # ShowDocLive for Grok Bot
 
-Live production playbooks (ShowDocs) for technical crew: sections, templates, run of show and crew share links.
+Live production playbooks (ShowDocs) for technical crew: sections, files, templates, run of show, schedules, AV signal-flow diagrams with real equipment ports, address book and crew share links.
 
 This plugin connects Grok Bot (and other MCP clients) to the hosted ShowDocLive MCP server:
 
@@ -19,9 +19,19 @@ A ShowDocLive **Pro** or **Team** plan (see https://showdoclive.com/pricing). Si
 
 https://showdoclive.com/grok-bot.html
 
+## What it can do
+
+- **ShowDocs and sections**: read, create, edit, move, hide and tidy sections, with undo and conflict checks so a newer human edit is never overwritten.
+- **Files**: upload files from your computer (signed upload link, no base64), attach them to sections, list and download them.
+- **Run of show and schedules**: rundowns with days, rows and columns, Mic'd plans, and schedules with locations, categories and export.
+- **AV signal-flow diagrams and equipment**: equipment is reality. Devices keep the port names printed on the real gear (USB, HD-SDI, i2Net and so on), two-way ports for USB and network signals, duplicate checks, and reusable "Generic …" items when nothing specific is needed. Grok Bot asks before adding missing gear. Wireless (RF) links are drawn as dotted lines with no cable. Diagrams can be checked, rendered as PNG or PDF, and have cable and equipment lists.
+- **Address book and contacts**: contacts, roles on ShowDocs, notes, suggestions and merges.
+- **Sharing**: ShowDoc and crew share links.
+- **Live show control, rehearsal only** (see below).
+
 ## Tools
 
-Toolset v1.34.0: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 24 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
+Toolset v1.35.5: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
 
 **Live show control is rehearsal-only.** Grok Bot can start, run and end a rehearsal it started itself (`show_run_rehearsal_start`); on a real live show every live-control action answers 403 `LIVE_CONTROL_REHEARSAL_ONLY` and the show stays with the human show caller. `show_run_go` and `show_run_stop` are off by default and need `confirm`.
 
@@ -37,9 +47,9 @@ Toolset v1.34.0: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `contact_get` — Read a contact (read-only)
 - `contact_set_role` — Set a contact's role on a ShowDoc (writes)
 - `contact_add_note` — Add a note to a contact (writes)
-- `contact_merge` — Merge duplicate contacts (destructive)
+- `contact_merge` — Merge duplicate contacts (destructive, off by default)
 - `contact_usage` — Where a contact is used (read-only)
-- `contact_delete` — Delete a contact (destructive)
+- `contact_delete` — Delete a contact (destructive, off by default)
 - `create_playbook` — Create a ShowDoc (writes)
 - `duplicate_playbook` — Duplicate a ShowDoc (writes)
 - `archive_playbook` — Archive a ShowDoc (writes)
@@ -198,7 +208,7 @@ Toolset v1.34.0: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `system_wireless` — Read a diagram's wireless (RF) picture (read-only)
 - `system_connect` — Connect devices (writes)
 - `system_visual_link_create` — Add a visual link (writes)
-- `system_visual_link_remove` — Remove a visual link (destructive)
+- `system_visual_link_remove` — Remove a visual link (destructive, off by default)
 - `system_validate` — Check a system (read-only)
 - `system_swap` — Swap a device (writes)
 - `system_resync` — Refresh devices from the library (writes)
@@ -237,11 +247,9 @@ Toolset v1.34.0: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.34.0, 2026-10-25)
+## What's new (toolset v1.35.5, 2026-10-25)
 
-Live show control for rehearsals: read where the show is, start and end a rehearsal, GO, stop, resume, keep to time and set the timer mode. You can only drive a rehearsal you started; a real live show answers 403 LIVE_CONTROL_REHEARSAL_ONLY.
-
-One-call tools for diagrams (rename with baseRev, soft delete with restore, PDF link, relink), patch check, groups, cables, knowledge, address book, saved shows and mic edit locks. Creates take an idempotencyKey; destructive tools are off by default.
+Equipment is reality: ports keep the name printed on the real gear, with an optional per-device label; equipment search is compact by default and finds generic items; ports default to two-way for USB, network, Dante and i2Net. Wireless (RF) links pair a transmitter to a receiver channel and are drawn as dotted lines with no cable. `diagram_render_png` always returns a complete image.
 
 ## Network endpoints
 
