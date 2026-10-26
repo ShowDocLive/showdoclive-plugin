@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.9.0 (2026-10-26)
+
+Listing updated for toolset v1.36.1: README tool list regenerated from the live connector (176 actions, 27 off by default), device stacks; changelog entries for toolsets 1.35.6-1.36.1.
+
+### Toolset 1.36.1 (2026-10-25)
+
+- The built-in stacks rule now has its own topic, so knowledge_get with topic stacks returns it.
+- Changed: `knowledge_get`
+
+### Toolset 1.36.0 (2026-10-25)
+
+- Device stacks: identical devices (same equipment item) that all feed one device can be grouped so the editor folds them into one card. Folding is per person and view only; exports, the crew view and share links always show every device, and the stack tools return every member in full.
+- Added: `diagram_stack_create`, `diagram_stack_update`, `diagram_stacks_list`, `diagram_unstack`
+- Changed: `submit_feedback`
+
+### Toolset 1.35.6 (2026-10-25)
+
+- Display names only: the two address-book tools now have their own titles so the consent screen no longer lists duplicates, and the app description mentions schedules, diagrams and equipment, and the address book. Behaviour is unchanged.
+- Changed: `address_book_add_note`, `address_book_set_project_role`
+
 ## 1.8.0 (2026-10-25)
 
 Listing updated for toolset v1.35.5: capabilities summary (diagrams and equipment with real ports, dotted RF links, schedules, address book, files, rehearsal-only show control); 27 actions off by default; changelog entries for toolsets 1.34.1-1.35.5.
