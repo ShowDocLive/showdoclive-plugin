@@ -249,7 +249,7 @@ Toolset v1.36.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `get_connector_updates` — What's new: toolset version, changelog, deprecated tools and replacements (read-only)
 - `submit_feedback` — Send feedback to the ShowDocLive developers: missing tools, bugs, confusing behaviour
 
-The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
+The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a one-time connector-updated notice on the first tool result (calls are never refused for an old tool list; only removed or renamed tools are), and can call `get_connector_updates` for the changelog.
 
 ## What's new (toolset v1.36.1, 2026-10-25)
 
