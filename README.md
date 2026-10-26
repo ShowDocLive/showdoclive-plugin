@@ -31,7 +31,7 @@ https://showdoclive.com/grok-bot.html
 
 ## Tools
 
-Toolset v1.35.5: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
+Toolset v1.36.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
 
 **Live show control is rehearsal-only.** Grok Bot can start, run and end a rehearsal it started itself (`show_run_rehearsal_start`); on a real live show every live-control action answers 403 `LIVE_CONTROL_REHEARSAL_ONLY` and the show stays with the human show caller. `show_run_go` and `show_run_stop` are off by default and need `confirm`.
 
@@ -182,6 +182,10 @@ Toolset v1.35.5: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `knowledge_add` — Add a drawing rule (writes)
 - `knowledge_update` — Update a drawing rule (writes)
 - `diagram_cleanup` — Clean up a diagram (writes)
+- `diagram_stacks_list` — List device stacks (read-only)
+- `diagram_stack_create` — Stack identical devices (writes)
+- `diagram_stack_update` — Rename a stack or change its members (writes)
+- `diagram_unstack` — Unstack devices (writes)
 - `diagram_lists` — Equipment and cable lists (read-only)
 - `diagram_rename` — Rename or move a diagram (writes)
 - `diagram_get_meta` — Read a diagram's details (read-only)
@@ -237,8 +241,8 @@ Toolset v1.35.5: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `address_book_suggestions` — List address book suggestions (read-only)
 - `address_book_suggestion_accept` — Accept a suggestion (writes)
 - `address_book_suggestion_dismiss` — Dismiss a suggestion (writes)
-- `address_book_set_project_role` — Set a contact's role on a ShowDoc (writes)
-- `address_book_add_note` — Add a note to a contact (writes)
+- `address_book_set_project_role` — Set an address-book contact's role on a ShowDoc (writes)
+- `address_book_add_note` — Add a note to an address-book contact (writes)
 
 ### Built in (always on)
 
@@ -247,9 +251,10 @@ Toolset v1.35.5: 172 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a blocking notice on their next tool call until they refresh the tool list, and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.35.5, 2026-10-25)
+## What's new (toolset v1.36.1, 2026-10-25)
 
-Equipment is reality: ports keep the name printed on the real gear, with an optional per-device label; equipment search is compact by default and finds generic items; ports default to two-way for USB, network, Dante and i2Net. Wireless (RF) links pair a transmitter to a receiver channel and are drawn as dotted lines with no cable. `diagram_render_png` always returns a complete image.
+- Device stacks: identical devices (same equipment item) that all feed one device can be grouped so the editor folds them into one card. Folding is per person and view only; exports, the crew view and share links always show every device, and the stack tools return every member in full.
+- The built-in stacks rule now has its own topic, so knowledge_get with topic stacks returns it.
 
 ## Network endpoints
 
