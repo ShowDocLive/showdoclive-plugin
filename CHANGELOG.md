@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.11.0 (2026-10-27)
+
+Listing updated for toolset v1.37.1: Person+org instruction + `contact_create` description (find/create company then companyContactId); soft stale-client notice unchanged.
+
+### Toolset 1.37.1 (2026-10-27)
+
+- Person+org rule: when adding a person at a company, find/create the company contact (details/logo) then link the person via companyContactId — not free-text company only.
+- Changed: `contact_create`
+
 ## 1.10.0 (2026-10-27)
 
 Listing updated for toolset v1.37.0: README tool list regenerated from the live connector (176 actions, 27 off by default); companies in Contacts and schedule Who consistency; changelog entry for toolset 1.37.0.
