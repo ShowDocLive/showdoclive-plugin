@@ -25,13 +25,13 @@ https://showdoclive.com/grok-bot.html
 - **Files**: upload files from your computer (signed upload link, no base64), attach them to sections, list and download them.
 - **Run of show and schedules**: rundowns with days, rows and columns, Mic'd plans, and schedules with locations, categories and export.
 - **AV signal-flow diagrams and equipment**: equipment is reality. Devices keep the port names printed on the real gear (USB, HD-SDI, i2Net and so on), two-way ports for USB and network signals, duplicate checks, and reusable "Generic …" items when nothing specific is needed. Grok Bot asks before adding missing gear. Wireless (RF) links are drawn as dotted lines with no cable. Diagrams can be checked, rendered as PNG or PDF, and have cable and equipment lists.
-- **Address book and contacts**: contacts, roles on ShowDocs, notes, suggestions and merges.
+- **Address book and contacts**: people and company contacts, roles on ShowDocs, notes, suggestions and merges; schedule Who links via contacts (company+role or bare role).
 - **Sharing**: ShowDoc and crew share links.
 - **Live show control, rehearsal only** (see below).
 
 ## Tools
 
-Toolset v1.36.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
+Toolset v1.37.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
 
 **Live show control is rehearsal-only.** Grok Bot can start, run and end a rehearsal it started itself (`show_run_rehearsal_start`); on a real live show every live-control action answers 403 `LIVE_CONTROL_REHEARSAL_ONLY` and the show stays with the human show caller. `show_run_go` and `show_run_stop` are off by default and need `confirm`.
 
@@ -251,10 +251,9 @@ Toolset v1.36.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a one-time connector-updated notice on the first tool result (calls are never refused for an old tool list; only removed or renamed tools are), and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.36.1, 2026-10-25)
+## What's new (toolset v1.37.0, 2026-10-27)
 
-- Device stacks: identical devices (same equipment item) that all feed one device can be grouped so the editor folds them into one card. Folding is per person and view only; exports, the crew view and share links always show every device, and the stack tools return every member in full.
-- The built-in stacks rule now has its own topic, so knowledge_get with topic stacks returns it.
+- Companies in Contacts (kind person|company) and schedule Who consistency: bots link Who via responsibleContacts; company+role is a company contact with role on the people item; bare roles use asRole; plain responsible auto-links.
 
 ## Network endpoints
 

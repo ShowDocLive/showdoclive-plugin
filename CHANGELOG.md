@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10.0 (2026-10-27)
+
+Listing updated for toolset v1.37.0: README tool list regenerated from the live connector (176 actions, 27 off by default); companies in Contacts and schedule Who consistency; changelog entry for toolset 1.37.0.
+
+### Toolset 1.37.0 (2026-10-27)
+
+- Companies in Contacts (kind person|company) and schedule Who consistency: bots link Who via responsibleContacts; company+role is a company contact with role on the people item; bare roles use asRole; plain responsible auto-links.
+- Changed: `add_schedule_rows`, `contact_create`, `contact_list`, `contact_search`, `update_schedule_row`, `update_schedule_rows`
+
 ## 1.9.0 (2026-10-26)
 
 Listing updated for toolset v1.36.1: README tool list regenerated from the live connector (176 actions, 27 off by default), device stacks; changelog entries for toolsets 1.35.6-1.36.1.
