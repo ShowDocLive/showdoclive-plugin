@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.12.0 (2026-10-28)
+
+Listing updated for toolset v1.38.0: person mobile + structured address; company locations[]; Person+org rule kept; soft stale-client notice unchanged.
+
+### Toolset 1.38.0 (2026-10-28)
+
+- Contacts AU: person mobile + structured postal address; company locations[] (label+address offices). Notes stay free text.
+- Person+org rule unchanged: find/create kind=company then companyContactId.
+- Changed: `contact_create`, `contact_update`
+
 ## 1.11.0 (2026-10-27)
 
 Listing updated for toolset v1.37.1: Person+org instruction + `contact_create` description (find/create company then companyContactId); soft stale-client notice unchanged.
