@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.13.0 (2026-10-28)
+
+Listing updated for toolset v1.39.0: companyLocationId + typed phones/emails; Person+org rule kept; soft stale-client notice unchanged.
+
+### Toolset 1.39.0 (2026-10-28)
+
+- Contacts AX: companyLocationId (loc_*) when linking a person to a company office; typed phones[] (mobile|office|other) and emails[] (work|personal|other). Prefer companyContactId over free-text company; keep Person+org find/create then link.
+- Changed: `contact_create`, `contact_update`
+
 ## 1.12.0 (2026-10-28)
 
 Listing updated for toolset v1.38.0: person mobile + structured address; company locations[]; Person+org rule kept; soft stale-client notice unchanged.
