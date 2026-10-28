@@ -25,13 +25,13 @@ https://showdoclive.com/grok-bot.html
 - **Files**: upload files from your computer (signed upload link, no base64), attach them to sections, list and download them.
 - **Run of show and schedules**: rundowns with days, rows and columns, Mic'd plans, and schedules with locations, categories and export.
 - **AV signal-flow diagrams and equipment**: equipment is reality. Devices keep the port names printed on the real gear (USB, HD-SDI, i2Net and so on), two-way ports for USB and network signals, duplicate checks, and reusable "Generic …" items when nothing specific is needed. Grok Bot asks before adding missing gear. Wireless (RF) links are drawn as dotted lines with no cable. Diagrams can be checked, rendered as PNG or PDF, and have cable and equipment lists.
-- **Address book and contacts**: people and company contacts (person at a company → find/create company then link via companyContactId), roles on ShowDocs, notes, suggestions and merges; schedule Who links via contacts (company+role or bare role).
+- **Address book and contacts**: people and company contacts (person at a company → find/create company then link via companyContactId; person mobile + structured address; company locations[] for offices), roles on ShowDocs, notes, suggestions and merges; schedule Who links via contacts (company+role or bare role).
 - **Sharing**: ShowDoc and crew share links.
 - **Live show control, rehearsal only** (see below).
 
 ## Tools
 
-Toolset v1.37.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
+Toolset v1.38.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
 
 **Live show control is rehearsal-only.** Grok Bot can start, run and end a rehearsal it started itself (`show_run_rehearsal_start`); on a real live show every live-control action answers 403 `LIVE_CONTROL_REHEARSAL_ONLY` and the show stays with the human show caller. `show_run_go` and `show_run_stop` are off by default and need `confirm`.
 
@@ -251,10 +251,11 @@ Toolset v1.37.1: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a one-time connector-updated notice on the first tool result (calls are never refused for an old tool list; only removed or renamed tools are), and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.37.1, 2026-10-27)
+## What's new (toolset v1.38.0, 2026-10-28)
 
-- Person+org rule: when adding a person at a company, find/create the company contact (details/logo) then link the person via companyContactId — not free-text company only.
-- Changed: `contact_create` (description); instructions require company find/create before linking the person.
+- Contacts AU: person `mobile` + structured postal `address`; company `locations[]` (label+address offices). Notes stay free text.
+- Person+org rule kept: find/create kind=company (details/logo) then person with `companyContactId`.
+- Changed: `contact_create`, `contact_update`.
 
 ## Network endpoints
 
