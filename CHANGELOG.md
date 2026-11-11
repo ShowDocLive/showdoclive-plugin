@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.14.0 (2026-11-11)
+
+Listing updated for toolset v1.43.0 (fingerprint 341f5f39f2a56f74). This also covers v1.40.0 to v1.42.0, which were not listed before. 195 actions (39 off by default) plus 2 built-ins. Soft stale-client notice unchanged.
+
+### Toolset 1.43.0 (2026-11-11)
+
+- Files & links panel: `description` required on attach (min 3 characters); new optional `group`, `receivedAt`, `from`, `sourceType`, `subject`, `replaces`; a "Files" section is created when no `sectionId` is given and none exists.
+- New: `add_link`, `update_files`, `move_file`, `file_groups_update`, `file_group_delete` (destructive, off by default)
+- Changed: `attach_file_to_section`, `create_attachment_upload`, `list_attachments` (`includeLinks`, `includeHidden`), `submit_feedback`
+
+### Toolset 1.42.0 (2026-11-10)
+
+- People are contact-first: `person_add` adds a contact to a ShowDoc and, optionally, to a section, rundown or schedule slot by id. `person_remove` takes a person off (destructive, off by default).
+- New: `person_add`, `person_add_to_address_book`, `person_remove`, `people_mentioned_list`
+- Changed: `contact_set_photo` (`contactId`, `kind`), `contact_set_role` (role "" keeps the person on the event), rundown and schedule row tools (people go through `person_add`; typed names link only existing contacts). All 11 `address_book_*` tools are now off by default.
+
+### Toolset 1.41.0 (2026-11-05)
+
+- Items sections are easier to find: the instructions say when to create one; `get_playbook` returns Items statuses and rows.
+- Changed: `add_section`, `get_playbook`, `items_create`, `items_get`
+
+### Toolset 1.40.0 (2026-11-01)
+
+- New Items sections (task lists with status, people, deadline, state, notes, links, story and chat).
+- New: `items_list`, `items_get`, `items_create`, `items_update`, `items_reorder`, `items_delete` (off by default), `items_set_statuses`, `items_chat_post`, `items_link_add`, `items_link_remove`
+
 ## 1.13.0 (2026-10-28)
 
 Listing updated for toolset v1.39.0: companyLocationId + typed phones/emails; Person+org rule kept; soft stale-client notice unchanged.
