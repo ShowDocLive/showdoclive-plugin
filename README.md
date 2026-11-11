@@ -22,16 +22,17 @@ https://showdoclive.com/grok-bot.html
 ## What it can do
 
 - **ShowDocs and sections**: read, create, edit, move, hide and tidy sections, with undo and conflict checks so a newer human edit is never overwritten.
-- **Files**: upload files from your computer (signed upload link, no base64), attach them to sections, list and download them.
+- **Items sections**: task lists with owners, status, deadlines, a one-line current state, notes, links, an automatic story and a running chat per item.
+- **Files and links**: upload files from your computer (signed upload link, no base64) or from a public link, each with a description and a group (Quotes, Drawings, Images…), received date and sender; a new version replaces and hides the old one. Add link cards, edit, hide, regroup or move cards, manage groups, list and download.
 - **Run of show and schedules**: rundowns with days, rows and columns, Mic'd plans, and schedules with locations, categories and export.
 - **AV signal-flow diagrams and equipment**: equipment is reality. Devices keep the port names printed on the real gear (USB, HD-SDI, i2Net and so on), two-way ports for USB and network signals, duplicate checks, and reusable "Generic …" items when nothing specific is needed. Grok Bot asks before adding missing gear. Wireless (RF) links are drawn as dotted lines with no cable. Diagrams can be checked, rendered as PNG or PDF, and have cable and equipment lists.
-- **Address book and contacts**: people and company contacts (person at a company → find/create company then link via companyContactId + optional companyLocationId; typed phones[]/emails[]; person mobile + structured address; company locations[] for offices), roles on ShowDocs, notes, suggestions and merges; schedule Who links via contacts (company+role or bare role).
+- **People and contacts**: `person_add` puts a person on a ShowDoc in one call (finds or creates the contact, links their company, and places them in a section, rundown cell or schedule Who by id); `person_remove` takes them off (off by default). People and company contacts with typed phones/emails, company locations, roles on ShowDocs, notes, merges and photos/logos by contactId. The legacy `address_book_*` tools are off by default.
 - **Sharing**: ShowDoc and crew share links.
 - **Live show control, rehearsal only** (see below).
 
 ## Tools
 
-Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 27 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
+Toolset v1.43.0: 195 ShowDocLive actions plus 2 built-in tools, in 11 groups. The 39 actions marked "off by default" start switched off; each user can switch any action on or off on their Grok Bot page (https://mcp.showdoclive.com/grokbot), which also shows what's new in each toolset version.
 
 **Live show control is rehearsal-only.** Grok Bot can start, run and end a rehearsal it started itself (`show_run_rehearsal_start`); on a real live show every live-control action answers 403 `LIVE_CONTROL_REHEARSAL_ONLY` and the show stays with the human show caller. `show_run_go` and `show_run_stop` are off by default and need `confirm`.
 
@@ -46,6 +47,10 @@ Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `contact_search` — Search contacts (read-only)
 - `contact_get` — Read a contact (read-only)
 - `contact_set_role` — Set a contact's role on a ShowDoc (writes)
+- `person_add` — Add a person to a ShowDoc (writes)
+- `person_add_to_address_book` — Add a person to the address book (no ShowDoc) (writes)
+- `person_remove` — Remove a person from a ShowDoc or one place (destructive, off by default)
+- `people_mentioned_list` — List people mentioned but not linked (read-only)
 - `contact_add_note` — Add a note to a contact (writes)
 - `contact_merge` — Merge duplicate contacts (destructive, off by default)
 - `contact_usage` — Where a contact is used (read-only)
@@ -71,6 +76,16 @@ Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `undo_section_move` — Undo last section move (writes)
 - `delete_section` — Delete a section (destructive, off by default)
 - `place_content` — Suggest where text belongs (writes)
+- `items_list` — List items in an Items section (read-only)
+- `items_get` — Read one item with story and chat (read-only)
+- `items_create` — Add an item (writes)
+- `items_update` — Update an item (writes)
+- `items_reorder` — Reorder items (writes)
+- `items_delete` — Delete an item (destructive, off by default)
+- `items_chat_post` — Post in an item's chat (writes)
+- `items_link_add` — Link an item to a section or item (writes)
+- `items_link_remove` — Remove an item link (destructive)
+- `items_set_statuses` — Set the status list of an Items section (writes)
 
 ### Files
 
@@ -79,6 +94,11 @@ Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 - `attach_file_to_section` — Attach a file (Fast Storage or Google Drive) (writes)
 - `list_storage_options` — Where can files go? (read-only)
 - `list_attachments` — List file cards (read-only)
+- `update_files` — Edit, hide or regroup file and link cards (writes)
+- `add_link` — Add link cards to a section (writes)
+- `move_file` — Move a file or link card (writes)
+- `file_groups_update` — Create, rename or reorder file groups (writes)
+- `file_group_delete` — Delete a file group (destructive, off by default)
 - `get_attachment_download` — Download a file (read-only)
 - `remove_attachment` — Remove a file card (destructive, off by default)
 - `set_file_upload_link` — File Upload Link for a section (writes)
@@ -232,17 +252,19 @@ Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 ### Address book
 
-- `address_book_list` — List the address book (read-only)
-- `address_book_get` — Read an address book contact (read-only)
-- `address_book_create` — Add an address book contact (writes)
-- `address_book_update` — Change an address book contact (writes)
+Legacy duplicates of the contact_* tools, off by default since toolset v1.42.0 (use `contact_*` and `person_add`). Each user can switch them back on.
+
+- `address_book_list` — List the address book (read-only, off by default)
+- `address_book_get` — Read an address book contact (read-only, off by default)
+- `address_book_create` — Add an address book contact (writes, off by default)
+- `address_book_update` — Change an address book contact (writes, off by default)
 - `address_book_delete` — Delete an address book contact (destructive, off by default)
 - `address_book_merge` — Merge address book contacts (destructive, off by default)
-- `address_book_suggestions` — List address book suggestions (read-only)
-- `address_book_suggestion_accept` — Accept a suggestion (writes)
-- `address_book_suggestion_dismiss` — Dismiss a suggestion (writes)
-- `address_book_set_project_role` — Set an address-book contact's role on a ShowDoc (writes)
-- `address_book_add_note` — Add a note to an address-book contact (writes)
+- `address_book_suggestions` — List address book suggestions (read-only, off by default)
+- `address_book_suggestion_accept` — Accept a suggestion (writes, off by default)
+- `address_book_suggestion_dismiss` — Dismiss a suggestion (writes, off by default)
+- `address_book_set_project_role` — Set an address-book contact's role on a ShowDoc (writes, off by default)
+- `address_book_add_note` — Add a note to an address-book contact (writes, off by default)
 
 ### Built in (always on)
 
@@ -251,11 +273,11 @@ Toolset v1.39.0: 176 ShowDocLive actions plus 2 built-in tools, in 11 groups. Th
 
 The tool list is versioned by the hosted connector. When it changes, connected assistants get `notifications/tools/list_changed`, a one-time connector-updated notice on the first tool result (calls are never refused for an old tool list; only removed or renamed tools are), and can call `get_connector_updates` for the changelog.
 
-## What's new (toolset v1.39.0, 2026-10-28)
+## What's new (toolsets v1.40.0 to v1.43.0, 2026-11-01 to 2026-11-11)
 
-- Contacts AX: `companyLocationId` (`loc_*`) when linking a person to a company office; typed `phones[]` (mobile|office|other) and `emails[]` (work|personal|other). Prefer `companyContactId` over free-text company.
-- Person+org rule kept: find/create kind=company (details/logo) then person with `companyContactId` (+ optional `companyLocationId`).
-- Changed: `contact_create`, `contact_update`.
+- **v1.43.0 Files & links**: `description` is required when attaching. Files carry `group`, `receivedAt`, `from` (`sourceType`, `subject`) and `replaces`, and attaching without a section creates a "Files" section. New `add_link`, `update_files`, `move_file`, `file_groups_update` and `file_group_delete` (off by default). `list_attachments` gains `includeLinks` and `includeHidden`.
+- **v1.42.0 People, contact-first**: new `person_add`, `person_add_to_address_book`, `people_mentioned_list` and `person_remove` (off by default). `contact_set_photo` takes `contactId` and `kind`. Typed names in rundown/schedule people cells only link existing contacts. The `address_book_*` tools are off by default.
+- **v1.41.0 / v1.40.0 Items sections**: `add_section` kind "items" and the `items_*` tools. `get_playbook` returns Items statuses and rows.
 
 ## Network endpoints
 
